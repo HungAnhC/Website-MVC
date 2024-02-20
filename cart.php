@@ -62,7 +62,7 @@ if(isset($_GET['id'])){
 								
 								<td><?php echo $result['productName'] ?></td>
 								<td><img src="admin/uploads/<?php echo $result['image']; ?>" alt=""/></td>
-								<td><?php echo $result['price']; ?></td>
+								<td><?php echo $fm->format_currency($result['price']).' VND'; ?></td>
 								<td>
 									<form action="cart.php" method="post">
 										<input type="hidden" name="cartId" value="<?php echo $result['cartId']; ?>"/>
@@ -72,7 +72,7 @@ if(isset($_GET['id'])){
 								</td>
 								<td><?php
 								$total = $result['quantity'] * $result['price'];
-								echo $total;
+								echo $fm->format_currency($total).' VND';
 								?></td>
 								<td><a onclick="return confirm('Are you want to delete?');" href="?cartid=<?php echo $result['cartId']; ?>">Xóa</a></td>
 							</tr>
@@ -96,7 +96,7 @@ if(isset($_GET['id'])){
 							<th>Sub total: </th>
 							<th><?php 
 							
-							echo $subtotal;
+							echo $fm->format_currency($subtotal).' VND';
 							Session::set('sum',$subtotal);
 							Session::set('qty',$qty);
 
@@ -111,7 +111,7 @@ if(isset($_GET['id'])){
 						<tr>
 							<th>Grand Total: </th>
 							<th><?php $vat = $subtotal*0.1 + $subtotal;
-									echo $vat;
+									echo $fm->format_currency($vat).' VND';
 							?></th>
 
 						</tr>

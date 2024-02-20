@@ -79,13 +79,13 @@ if(isset($_GET['orderid']) && $_GET['orderid']=='order'){
 							<tr>
                                 <td><?php echo $i; ?></td>							
 								<td><?php echo $result['productName'] ?></td>								
-								<td><?php echo $result['price'].' '.'VND'; ?></td>
+								<td><?php echo $fm->format_currency($result['price']).' '.'VND'; ?></td>
 								
                                 <td><?php echo $result['quantity']; ?></td>							
 								</td>
 								<td><?php
 								$total = $result['quantity'] * $result['price'];
-								echo $total.' '.'VND';
+								echo $fm->format_currency($total).' '.'VND';
 								?></td>
 								
 							</tr>
@@ -109,7 +109,7 @@ if(isset($_GET['orderid']) && $_GET['orderid']=='order'){
 							<th>Sub total: </th>
 							<th><?php 
 							
-							echo $subtotal .' '.'VND';
+							echo $fm->format_currency($subtotal) .' '.'VND';
 							Session::set('sum',$subtotal);
 							Session::set('qty',$qty);
 
@@ -124,7 +124,7 @@ if(isset($_GET['orderid']) && $_GET['orderid']=='order'){
 						<tr>
 							<th>Grand Total: </th>
 							<th><?php $vat = $subtotal*0.1 + $subtotal;
-									echo $vat.' '.'VND';
+									echo $fm->format_currency($vat) .' VND';
 							?></th>
 
 						</tr>

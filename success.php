@@ -43,7 +43,7 @@ include  "inc/header.php";
             <p class="success_note">Total price you have bought from my website:<?php
             $vat= $amount*0.1;
             $total=$vat+$amount;
-            echo $total.' VND';
+            echo $fm->format_currency($total).' VND';
             ?>  </p>
             <p class="success_note"><a  href="orderdetails.php">Order details</a></p>
  		</div>

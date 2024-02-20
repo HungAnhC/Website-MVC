@@ -66,7 +66,7 @@ $product = new product();
 								if($check_cart){
 								$sum = Session::get("sum");
 								$qty = Session::get("qty");								
-								echo $sum.' '.'VND'.' '.'Quantity:'.$qty;
+								echo $fm->format_currency($sum).' '.'VND'.' '.'Quantity:'.$qty;
 								}else{
 									echo"Empty";
 								}

@@ -6,7 +6,6 @@ include  "inc/header.php";
 <?php
 if(isset($_GET['proid'])){
     $customer_id=Session::get('customer_id');
-
     $proid=$_GET['proid'];
 	$delwlist= $product->delete_wlist($proid,$customer_id);
 }
@@ -62,7 +61,7 @@ if(isset($_GET['proid'])){
 								
 								<td><?php echo $result['productName'] ?></td>
 								<td><img src="admin/uploads/<?php echo $result['image']; ?>" alt=""/></td>
-								<td><?php echo $result['price']; ?></td>
+								<td><?php echo $fm->format_currency($result['price']); ?></td>
 								<td>
                                     <a  href="?proid=<?php echo $result['productId']; ?>">Remove</a>||
                                     <a  href="details.php?proid=<?php echo $result['productId']; ?>">Buy now</a>

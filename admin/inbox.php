@@ -70,7 +70,7 @@ if(isset($_GET['delid']) ){
 							<td><?php echo $fm->formatDate($result['date_order'])?></td>
 							<td><?php echo $result['productName']?></td>
 							<td><?php echo $result['quantity']?></td>
-							<td><?php echo $result['price'].' VND'?></td>
+							<td><?php echo $fm->format_currency($result['price']).' VND'?></td>
 							<td><?php echo $result['customer_id']?></td>							
 							<td><a href = "customer.php?customerid=<?php echo $result['customer_id'] ?>">View address</a></td>
 							<td>

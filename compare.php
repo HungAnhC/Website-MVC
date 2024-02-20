@@ -4,10 +4,11 @@ include  "inc/header.php";
 
 ?>
 <?php
-// if(isset($_GET['cartid'])){
-//     $cartid=$_GET['cartid'];
-// 	$delcart= $ct->delete_cart($cartid);
-// }
+if(isset($_GET['proid'])){
+    $customer_id=Session::get('customer_id');
+    $proid=$_GET['proid'];
+	$delcompare= $product->delete_compare($proid,$customer_id);
+}
 
 // $update_quantity_cart = ""; // Khởi tạo biến
 // $subtotal = 0; // Khởi tạo biến subtotal
@@ -68,7 +69,11 @@ include  "inc/header.php";
 								<td><?php echo $result['productName'] ?></td>
 								<td><img src="admin/uploads/<?php echo $result['image']; ?>" alt=""/></td>
 								<td><?php echo $result['price']; ?></td>
-								<td><a  href="details.php?proid=<?php echo $result['productId']; ?>">View</a></td>
+								<td>
+									<a  href="details.php?proid=<?php echo $result['productId']; ?>">View</a>||
+									<a  href="?proid=<?php echo $result['productId']; ?>">Remove</a>
+
+								</td>
 							</tr>
 							<?php
 

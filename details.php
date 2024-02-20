@@ -15,6 +15,12 @@ if ($_SERVER['REQUEST_METHOD']==='POST' && isset($_POST['compare'])){
 	$productid= $_POST['productid'];
 	$insertCompare =$product->insertCompare($productid,$customer_id);
 }
+$insertWishlist = '';
+
+if ($_SERVER['REQUEST_METHOD']==='POST' && isset($_POST['wishlist'])){
+	$productid= $_POST['productid'];
+	$insertWishlist =$product->insertWishlist($productid,$customer_id);
+}
 if ($_SERVER['REQUEST_METHOD']==='POST' && isset($_POST['submit'])){
 	$quantity= $_POST['quantity'];
 	$insertCart =$ct->add_to_cart($quantity,$id);
@@ -66,13 +72,33 @@ if ($_SERVER['REQUEST_METHOD']==='POST' && isset($_POST['submit'])){
 							echo "";
 						}else{
 							echo "<input type='submit' class='buysubmit' name='compare' value='Compare Product'/>".'   ';
-							echo "<input type='submit' class='buysubmit' name='wishlist' value='Save to wishlist'/>";
+							echo "<input type='submit' class='buysubmit' name='wishlist' value='Save to wishlist'/><br>";
 
 						}
 						?>
 						<?php
 						if($insertCompare){
 							echo $insertCompare;
+						}
+						?>
+						</form>
+						<form action="" method="POST">
+						<!-- <a href="?wlist=<?php echo $result_details['productId'] ?>" class="buysubmit">Save  to wishlist</a> -->
+						<!-- <a href="?compare=<?php echo $result_details['productId'] ?>" class="buysubmit">Compare Product</a> -->
+						<input type="hidden"  name="productid" value="<?php echo $result_details['productId'] ?>"/>
+						
+						<?php
+						$login_check = Session::get('customer_login');
+						if($login_check){
+							echo "";
+						}else{
+							echo "<input type='submit' class='buysubmit' name='wishlist' value='Save to wishlist'/>";
+
+						}
+						?>
+						<?php
+						if($insertWishlist){
+							echo $insertWishlist;
 						}
 						?>
 						</form>

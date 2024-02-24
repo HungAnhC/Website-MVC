@@ -19,6 +19,12 @@
                         <li><a href="productadd.php">Thêm sản phẩm</a> </li>
                         <li><a href="productlist.php">Danh sách sản phẩm</a> </li>
                     </ul>
+                    <li><a class="menuitem">Slider</a>
+                        <ul class="submenu">
+                            <li><a href="slideradd.php">Thêm Slider</a> </li>
+                            <li><a href="sliderlist.php">Danh sách Slider</a> </li>
+                        </ul>
+                    </li>
                 </li>
                <li><a class="menuitem">Site Option</a>
                     <ul class="submenu">
@@ -34,12 +40,6 @@
                     <ul class="submenu">
                         <li><a>About Us</a></li>
                         <li><a>Contact Us</a></li>
-                    </ul>
-                </li>
-				<li><a class="menuitem">Slider Option</a>
-                    <ul class="submenu">
-                        <li><a href="addslider.php">Add Slider</a> </li>
-                        <li><a href="sliderlist.php">Slider List</a> </li>
                     </ul>
                 </li>
 

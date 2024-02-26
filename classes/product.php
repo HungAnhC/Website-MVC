@@ -241,7 +241,18 @@ class product
         return $result;
     }
     public function getproduct_new(){
-        $query = "SELECT * FROM tbl_product ORDER BY productId desc LIMIT 4";
+        if(!isset($_GET['trang'])){
+            $trang=1;
+        }else{
+            $trang = $_GET['trang'];
+        }
+        $tungtrang = ($trang-1)*4;  
+        $query = "SELECT * FROM tbl_product ORDER BY productId LIMIT $tungtrang,4";
+        $result = $this->db->select($query);
+        return $result;
+    }
+    public function get_all_product(){
+        $query = "SELECT * FROM tbl_product ";
         $result = $this->db->select($query);
         return $result;
     }

@@ -61,6 +61,16 @@ include  "inc/slider.php";
 
 				?>
 			</div>
+			<div class ="pagination">
+				<?php
+				$product_all= $product->get_all_product();
+				$product_count =mysqli_num_rows($product_all);
+				$product_button = ceil($product_count/4);
+				for ($i=1;$i<=$product_button;$i++){
+					echo '<a href="pagination.php?trang='.$i.'">'.$i.'</a>';
+				}
+				?>
+			</div>
     </div>
  </div>
 

@@ -18,6 +18,25 @@ class customer
         $this->fm = new Format();
 
     }
+    public function insert_comment(){
+        $product_id = $_POST['product_id_binhluan'];
+        $tenbinhluan = $_POST['tennguoibinhluan'];
+        $binhluan =  $_POST['binhluan'];
+        if($tenbinhluan=='' || $binhluan==''){
+            $alert = "<span class='error'>Fields must be not empty</span>";
+            return $alert;
+        }else{
+            $query = "INSERT INTO tbl_comment(commentName,comment,productId) VALUES('$tenbinhluan','$binhluan','$product_id')";
+            $result = $this->db->insert($query);
+            if($result){
+                $alert="<span class='success'> Comment successfully</span>";
+                return $alert;
+            }else{
+                $alert="<span class='error'> Comment not success</span>";
+                return $alert;
+            }
+        }
+    }
     public function insert_customer($data){
         $name = mysqli_real_escape_string($this->db->link,$data['name']);
         $city = mysqli_real_escape_string($this->db->link,$data['city']);

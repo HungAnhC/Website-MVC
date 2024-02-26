@@ -25,6 +25,9 @@ if ($_SERVER['REQUEST_METHOD']==='POST' && isset($_POST['submit'])){
 	$quantity= $_POST['quantity'];
 	$insertCart =$ct->add_to_cart($quantity,$id);
 }
+if(isset($_POST["comment_submit"])){
+	$comment = $cs->insert_comment();
+}
 ?>
  <div class="main">
     <div class="content">
@@ -135,6 +138,25 @@ if ($_SERVER['REQUEST_METHOD']==='POST' && isset($_POST['submit'])){
     	
  				</div>
  		</div>
+		<div class="binhluan">
+		<div class="row">
+			<div class ="col-md-8">
+			<h4>Ý kiến sản phẩm</h4>
+			<?php
+			if(isset($comment)){
+				echo $comment;
+			}
+			?>
+			<form action="" method="post">
+				<p><input type="hidden" value="<?php echo $id ?>" name="product_id_binhluan"></p>
+				<p><input type = "text" placeholder ="Điền tên" class ="form-control" name="tennguoibinhluan"></p>
+				<p><textarea rows="5" style="resize:none;" placeholder="Bình luận ..."class="form-control" name="binhluan"></textarea></p>
+				<p><input type="submit" name ="comment_submit" class="btn btn-success" value ="Gửi bình luận"></p>
+			</form>
+
+			</div>
+		</div>
+		</div>
  	</div>
 	
 <?php
